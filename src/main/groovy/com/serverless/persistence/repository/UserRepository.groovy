@@ -1,11 +1,10 @@
 package com.serverless.persistence.repository
 
 import com.serverless.persistence.entity.User
-import groovy.transform.CompileStatic
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.PagingAndSortingRepository
+import org.springframework.data.repository.query.Param
 
-@CompileStatic
-interface UserRepository extends CrudRepository<User, Long> {
+interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
-  List<User> findByLastName(String lastName)
+  List<User> findByLastName(@Param("name") String lastName)
 }
